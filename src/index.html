@@ -14,9 +14,11 @@
     <fieldset>
         <legend>주소로 위치 찾기</legend>
         <input type="text" id='address'>
-        <button onclick="searchByAddr">주소로 지도 찾기</button>
+        <button onclick="searchByAddr()">주소로 지도 찾기</button>
     </fieldset>
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ba3d52774687ac1d11d2d8f3c61a9af1">
+    </script>
+    <script>
         if(navigator.geolocation){
             navigator.geolocation.getCurrentPosition(successCallback);
         }
