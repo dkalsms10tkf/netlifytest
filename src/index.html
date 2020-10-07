@@ -1,1 +1,40 @@
-<h2>HELLO</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <fieldset>
+        <legend>현재 위치를 지도에 표시하기</legend>
+        <div id = 'map' style="background-color: aquamarine; width: 500px; height: 500px;">
+        </div>
+    </fieldset>
+    <fieldset>
+        <legend>주소로 위치 찾기</legend>
+        <input type="text" id='address'>
+        <button onclick="searchByAddr">주소로 지도 찾기</button>
+    </fieldset>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ba3d52774687ac1d11d2d8f3c61a9af1">
+        if(navigator.geolocation){
+            navigator.geolocation.getCurrentPosition(successCallback);
+        }
+        function successCallback(pos) {
+            var lat = pos.coords.latitude;
+            var lng = pos.coords.longitude;
+            createMap(lat, lng);
+        }
+        function createMap(lat, lng) {
+            var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+                mapOption = { 
+                    center: new kakao.maps.LatLng(lat, lng), // 지도의 중심좌표
+                    level: 3 // 지도의 확대 레벨
+                };
+            // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
+            var map = new kakao.maps.Map(mapContainer, mapOption);
+        }
+         
+    </script>
+</body>
+</html>
