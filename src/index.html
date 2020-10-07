@@ -23,6 +23,7 @@
             navigator.geolocation.getCurrentPosition(successCallback);
         }
         var map;
+        var marker;
         function successCallback(pos) {
             var lat = pos.coords.latitude;
             var lng = pos.coords.longitude;
@@ -36,6 +37,19 @@
                 };
             // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
             map = new kakao.maps.Map(mapContainer, mapOption);
+            createMarker(lat, lng);
+        }
+        function createMarker(lat, lng) {
+            // 마커가 표시될 위치입니다 
+            var markerPosition  = new kakao.maps.LatLng(lat, length); 
+
+            // 마커를 생성합니다
+            marker = new kakao.maps.Marker({
+                position: markerPosition
+            });
+
+            // 마커가 지도 위에 표시되도록 설정합니다
+            marker.setMap(map);
         }
          
     </script>
